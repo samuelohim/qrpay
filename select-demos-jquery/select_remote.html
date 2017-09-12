@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+    <title>Ajax datasource</title>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    <link rel="stylesheet" href="css/mobiscroll.jquery.min.css">
+    <script src="js/mobiscroll.jquery.min.js"></script>
+
+    <style type="text/css">
+    button {
+        display: inline-block;
+        margin: 5px 5px 0 0;
+        padding: 10px 30px;
+        outline: 0;
+        border: 0;
+        cursor: pointer;
+        background: #5185a8;
+        color: #fff;
+        text-decoration: none;
+        font-family: arial, verdana, sans-serif;
+        font-size: 14px;
+        font-weight: 100;
+    }
+
+    input {
+        width: 100%;
+        margin: 0 0 5px 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        font-family: arial, verdana, sans-serif;
+        font-size: 14px;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+    }
+
+    .mbsc-page {
+        padding: 1em;
+    }
+
+    </style>
+
+</head>
+<body>
+
+<div mbsc-page class="demo-remote">
+    <input id="demo" />
+
+    <button id="clear">Clear</button>
+    <button id="show">Show</button>
+    
+</div>
+
+<script>
+
+    $(function () {
+    
+        /* Make sure to run it on a web server when tring this demo locally! */
+    
+        // Mobiscroll Select initialization
+        $('#demo').mobiscroll().select({
+            theme: 'ios',                     // Specify theme like: theme: 'ios' or omit setting to use default
+            lang: 'en',                       // Specify language like: lang: 'pl' or omit setting to use default
+            display: 'bottom',                // Specify display mode like: display: 'bottom' or omit setting to use default
+            layout: 'liquid',                 // More info about layout: https://docs.mobiscroll.com/select#opt-layout
+            placeholder: 'Please select...',  // More info about placeholder: https://docs.mobiscroll.com/select#opt-placeholder
+            data: {                           // More info about data: https://docs.mobiscroll.com/select#opt-data
+                url: '/content/json/languages.json',
+                type: 'json'
+            }
+        });
+
+        $('#show').click(function () {
+            $('#demo').mobiscroll('show');
+            return false;
+        });
+    
+        $('#clear').click(function () {
+            $('#demo').mobiscroll('clear');
+            return false;
+        });
+
+    });
+</script>
+
+</body>
+</html>

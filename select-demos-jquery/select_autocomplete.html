@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+    <title>Autocomplete</title>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    <link rel="stylesheet" href="css/mobiscroll.jquery.min.css">
+    <script src="js/mobiscroll.jquery.min.js"></script>
+
+    <style type="text/css">
+
+    </style>
+
+</head>
+<body>
+
+<div mbsc-page class="demo-autocomplete">
+    <div style="display:none" mbsc-form>
+        <div class="mbsc-form-group">
+            <div class="mbsc-form-group-title">Autocomplete</div>
+            <label>
+                Local data
+                <select id="demo"></select>
+            </label>
+            <label>
+                Remote data
+                <select id="demo-remote"></select>
+            </label>
+        </div>
+        <div class="mbsc-padding">
+            Both local filtering and remote filtering is supported.
+        </div>
+    </div>
+</div>
+
+<script>
+
+    mobiscroll.settings = {
+        theme: 'ios',                      // Specify theme like: theme: 'ios' or omit setting to use default
+            lang: 'en',                    // Specify language like: lang: 'pl' or omit setting to use default
+            display: 'bottom'              // Specify display mode like: display: 'bottom' or omit setting to use default
+    };
+    
+    $(function () {
+        var names = [{
+                text: "Abigail Hodges",
+                value: 1
+            }, {
+                text: "Adam Robertson",
+                value: 2
+            }, {
+                text: "Adrian Mackay",
+                value: 3
+            }, {
+                text: "Adrian Springer",
+                value: 4
+            },
+            
+            {
+                text: "Alexandra Thomson",
+                value: 5
+            }, {
+                text: "Amelia Dowd",
+                value: 6
+            }, {
+                text: "Amelia North",
+                value: 7
+            }, {
+                text: "Amy Cornish",
+                value: 8
+            }, {
+                text: "Amy Marshall",
+                value: 9
+            }, {
+                text: "Andrea Bell",
+                value: 10
+            }, {
+                text: "Andrea Butler",
+                value: 11
+            }, {
+                text: "Andrea Jones",
+                value: 12
+            }, {
+                text: "Andrea Piper",
+                value: 13
+            }, {
+                text: "Andrew Bond",
+                value: 14
+            }, {
+                text: "Andrew Langdon",
+                value: 15
+            }, {
+                text: "Andrew Mackenzie",
+                value: 16
+            }, {
+                text: "Angela Greene",
+                value: 17
+            }, {
+                text: "Anna Buckland",
+                value: 18
+            }, {
+                text: "Anna Wright",
+                value: 19
+            }, {
+                text: "Anne Parr",
+                value: 20
+            }, {
+                text: "Austin Dickens",
+                value: 21
+            }, {
+                text: "Ava Dyer",
+                value: 22
+            }, {
+                text: "Bella Carr",
+                value: 23
+            }, {
+                text: "Bella Lewis",
+                value: 24
+            }, {
+                text: "Benjamin Berry",
+                value: 25
+            }, {
+                text: "Bernadette Berry",
+                value: 26
+            }, {
+                text: "Bernadette Butler",
+                value: 27
+            }, {
+                text: "Bernadette Graham",
+                value: 28
+            }, {
+                text: "Bernadette Hughes",
+                value: 29
+            }, {
+                text: "Bernadette McLean",
+                value: 30
+            }, {
+                text: "Blake Nolan",
+                value: 31
+            }, {
+                text: "Blake Paige",
+                value: 32
+            }, {
+                text: "Blake Simpson",
+                value: 33
+            }, {
+                text: "Brandon Black",
+                value: 34
+            }, {
+                text: "Brandon Miller",
+                value: 35
+            }, {
+                text: "Cameron Marshall",
+                value: 36
+            }, {
+                text: "Carl Walker",
+                value: 37
+            }, {
+                text: "Caroline Butler",
+                value: 38
+            }, {
+                text: "Caroline Marshall",
+                value: 39
+            }, {
+                text: "Carolyn Campbell",
+                value: 40
+            }, {
+                text: "Charles Johnston",
+                value: 41
+            }, {
+                text: "Charles Martin",
+                value: 42
+            }, {
+                text: "Christian Abraham",
+                value: 43
+            }, {
+                text: "Christian McDonald",
+                value: 44
+            }, {
+                text: "Christian Newman",
+                value: 45
+            }, {
+                text: "Christian Short",
+                value: 46
+            }, {
+                text: "Christopher Hamilton",
+                value: 47
+            }, {
+                text: "Christopher Newman",
+                value: 48
+            }, {
+                text: "Colin Forsyth",
+                value: 49
+            }, {
+                text: "Colin Vance",
+                value: 50
+            }, {
+                text: "Dan Jackson",
+                value: 51
+            }, {
+                text: "Deirdre Clark",
+                value: 52
+            }, {
+                text: "Diane Berry",
+                value: 53
+            }, {
+                text: "Diane Blake",
+                value: 54
+            }, {
+                text: "Diane Hunter",
+                value: 55
+            }, {
+                text: "Diane Kerr",
+                value: 56
+            }, {
+                text: "Dominic Cornish",
+                value: 57
+            }, {
+                text: "Dominic Langdon",
+                value: 58
+            }, {
+                text: "Dominic Peters",
+                value: 59
+            }, {
+                text: "Dominic Springer",
+                value: 60
+            }, {
+                text: "Dorothy Carr",
+                value: 61
+            }, {
+                text: "Dylan Berry",
+                value: 62
+            }, {
+                text: "Dylan Manning",
+                value: 63
+            }, {
+                text: "Dylan Ogden",
+                value: 64
+            }, {
+                text: "Dylan Reid",
+                value: 65
+            }, {
+                text: "Edward Mackay",
+                value: 66
+            }, {
+                text: "Edward Peake",
+                value: 67
+            }, {
+                text: "Edward Randall",
+                value: 68
+            }, {
+                text: "Emily Miller",
+                value: 69
+            }, {
+                text: "Emma Duncan",
+                value: 70
+            }, {
+                text: "Eric Berry",
+                value: 71
+            }, {
+                text: "Eric Ferguson",
+                value: 72
+            }, {
+                text: "Evan Ferguson",
+                value: 73
+            }, {
+                text: "Evan Greene",
+                value: 74
+            }, {
+                text: "Faith Fisher",
+                value: 75
+            }, {
+                text: "Faith Hardacre",
+                value: 76
+            }, {
+                text: "Faith Short",
+                value: 77
+            }, {
+                text: "Felicity Lewis",
+                value: 78
+            }, {
+                text: "Felicity McDonald",
+                value: 79
+            }, {
+                text: "Felicity Parr",
+                value: 80
+            }, {
+                text: "Frank Mitchell",
+                value: 81
+            }, {
+                text: "Frank Slater",
+                value: 82
+            }, {
+                text: "Frank Welch",
+                value: 83
+            }, {
+                text: "Gabrielle McGrath",
+                value: 84
+            }, {
+                text: "Gavin Butler",
+                value: 85
+            }, {
+                text: "Gavin Young",
+                value: 86
+            }, {
+                text: "Gordon Ellison",
+                value: 87
+            }, {
+                text: "Gordon Walker",
+                value: 88
+            }, {
+                text: "Hannah Lewis",
+                value: 89
+            }, {
+                text: "Heather Edmunds",
+                value: 90
+            }, {
+                text: "Heather Kelly",
+                value: 91
+            }, {
+                text: "Heather Sutherland",
+                value: 92
+            }, {
+                text: "Irene Robertson",
+                value: 93
+            }, {
+                text: "Isaac Mackay",
+                value: 94
+            }, {
+                text: "Jack Turner",
+                value: 95
+            }, {
+                text: "Jacob Jackson",
+                value: 96
+            }, {
+                text: "Jacob McLean",
+                value: 97
+            }, {
+                text: "Jake James",
+                value: 98
+            }, {
+                text: "Jake Kelly",
+                value: 99
+            }, {
+                text: "Jake Martin",
+                value: 100
+            }, {
+                text: "Jake Randall",
+                value: 101
+            }, {
+                text: "Jane Clarkson",
+                value: 102
+            }, {
+                text: "Jane Gibson",
+                value: 103
+            }, {
+                text: "Jasmine Morrison",
+                value: 104
+            }, {
+                text: "Jasmine Paterson",
+                value: 105
+            }, {
+                text: "Jason MacLeod",
+                value: 106
+            }, {
+                text: "Jason Martin",
+                value: 107
+            }, {
+                text: "Jason Robertson",
+                value: 108
+            }, {
+                text: "Jennifer McLean",
+                value: 109
+            }, {
+                text: "Jennifer Parsons",
+                value: 110
+            }, {
+                text: "Jessica Butler",
+                value: 111
+            }, {
+                text: "Joan Graham",
+                value: 112
+            }, {
+                text: "Joanne Cornish",
+                value: 113
+            }, {
+                text: "Joe Marshall",
+                value: 114
+            }, {
+                text: "John Peters",
+                value: 115
+            }, {
+                text: "John Simpson",
+                value: 116
+            }, {
+                text: "Jonathan Turner",
+                value: 117
+            }, {
+                text: "Joseph Cornish",
+                value: 118
+            }, {
+                text: "Joseph MacDonald",
+                value: 119
+            }, {
+                text: "Joshua Abraham",
+                value: 120
+            }, {
+                text: "Julian Parr",
+                value: 121
+            }, {
+                text: "Karen Churchill",
+                value: 122
+            }, {
+                text: "Katherine Underwood",
+                value: 123
+            }, {
+                text: "Keith Martin",
+                value: 124
+            }, {
+                text: "Kevin Lawrence",
+                value: 125
+            }, {
+                text: "Kevin Wilson",
+                value: 126
+            }, {
+                text: "Kimberly Blake",
+                value: 127
+            }, {
+                text: "Kylie Davies",
+                value: 128
+            }, {
+                text: "Lauren Harris",
+                value: 129
+            }, {
+                text: "Leah Kerr",
+                value: 130
+            }, {
+                text: "Leah Terry",
+                value: 131
+            }, {
+                text: "Leonard Hart",
+                value: 132
+            }, {
+                text: "Leonard Morgan",
+                value: 133
+            }, {
+                text: "Liam McLean",
+                value: 134
+            }, {
+                text: "Liam Short",
+                value: 135
+            }, {
+                text: "Lillian Wilkins",
+                value: 136
+            }, {
+                text: "Lily Blake",
+                value: 137
+            }, {
+                text: "Lucas Forsyth",
+                value: 138
+            }, {
+                text: "Lucas Oliver",
+                value: 139
+            }, {
+                text: "Luke Bond",
+                value: 140
+            }, {
+                text: "Luke Wright",
+                value: 141
+            }, {
+                text: "Madeleine Rampling",
+                value: 142
+            }, {
+                text: "Madeleine Reid",
+                value: 143
+            }, {
+                text: "Maria Duncan",
+                value: 144
+            }, {
+                text: "Matt Fraser",
+                value: 145
+            }, {
+                text: "Max Edmunds",
+                value: 146
+            }, {
+                text: "Max Nolan",
+                value: 147
+            }, {
+                text: "Megan Paige",
+                value: 148
+            }, {
+                text: "Melanie Quinn",
+                value: 149
+            }, {
+                text: "Michelle Metcalfe",
+                value: 150
+            }, {
+                text: "Molly Wilson",
+                value: 151
+            }, {
+                text: "Nathan Poole",
+                value: 152
+            }, {
+                text: "Neil Metcalfe",
+                value: 153
+            }, {
+                text: "Nicholas Hudson",
+                value: 154
+            }, {
+                text: "Nicola Clarkson",
+                value: 155
+            }, {
+                text: "Nicola Rampling",
+                value: 156
+            }, {
+                text: "Oliver Hill",
+                value: 157
+            }, {
+                text: "Oliver Stewart",
+                value: 158
+            }, {
+                text: "Olivia Butler",
+                value: 159
+            }, {
+                text: "Olivia Glover",
+                value: 160
+            }, {
+                text: "Olivia Vance",
+                value: 161
+            }, {
+                text: "Owen Walker",
+                value: 162
+            }, {
+                text: "Paul Blake",
+                value: 163
+            }, {
+                text: "Paul Campbell",
+                value: 164
+            }, {
+                text: "Paul Coleman",
+                value: 165
+            }, {
+                text: "Paul Hudson",
+                value: 166
+            }, {
+                text: "Penelope Skinner",
+                value: 167
+            }, {
+                text: "Peter Morrison",
+                value: 168
+            }, {
+                text: "Peter Payne",
+                value: 169
+            }, {
+                text: "Piers Manning",
+                value: 170
+            }, {
+                text: "Piers Vance",
+                value: 171
+            }, {
+                text: "Rebecca North",
+                value: 172
+            }, {
+                text: "Richard Anderson",
+                value: 173
+            }, {
+                text: "Rose Taylor",
+                value: 174
+            }, {
+                text: "Ruth Hughes",
+                value: 175
+            }, {
+                text: "Ruth Sharp",
+                value: 176
+            }, {
+                text: "Ryan Stewart",
+                value: 177
+            }, {
+                text: "Sally Chapman",
+                value: 178
+            }, {
+                text: "Sally Clarkson",
+                value: 179
+            }, {
+                text: "Sam Bond",
+                value: 180
+            }, {
+                text: "Samantha Martin",
+                value: 181
+            }, {
+                text: "Sarah Edmunds",
+                value: 182
+            }, {
+                text: "Sean Lee",
+                value: 183
+            }, {
+                text: "Sean May",
+                value: 184
+            }, {
+                text: "Sebastian Blake",
+                value: 185
+            }, {
+                text: "Sebastian Manning",
+                value: 186
+            }, {
+                text: "Sonia Graham",
+                value: 187
+            }, {
+                text: "Sophie Duncan",
+                value: 188
+            }, {
+                text: "Sophie Morrison",
+                value: 189
+            }, {
+                text: "Sophie Sharp",
+                value: 190
+            }, {
+                text: "Stephanie Black",
+                value: 191
+            }, {
+                text: "Stephanie Wilson",
+                value: 192
+            }, {
+                text: "Steven Cameron",
+                value: 193
+            }, {
+                text: "Steven Hill",
+                value: 194
+            }, {
+                text: "Steven Rees",
+                value: 195
+            }, {
+                text: "Stewart Hill",
+                value: 196
+            }, {
+                text: "Stewart Paterson",
+                value: 197
+            }, {
+                text: "Stewart Scott",
+                value: 198
+            }, {
+                text: "Theresa Reid",
+                value: 199
+            }, {
+                text: "Thomas Allan",
+                value: 200
+            }, {
+                text: "Thomas Graham",
+                value: 201
+            }, {
+                text: "Tracey North",
+                value: 202
+            }, {
+                text: "Tracey Springer",
+                value: 203
+            }, {
+                text: "Trevor Bower",
+                value: 204
+            }, {
+                text: "Trevor Buckland",
+                value: 205
+            }, {
+                text: "Trevor Rampling",
+                value: 206
+            }, {
+                text: "Vanessa Cameron",
+                value: 207
+            }, {
+                text: "Vanessa Campbell",
+                value: 208
+            }, {
+                text: "Victor Springer",
+                value: 209
+            }, {
+                text: "Victoria MacDonald",
+                value: 210
+            }, {
+                text: "Virginia Anderson",
+                value: 211
+            }, {
+                text: "Virginia Welch",
+                value: 212
+            }, {
+                text: "Wanda Miller",
+                value: 213
+            }, {
+                text: "Wanda Mills",
+                value: 214
+            }, {
+                text: "Wendy Churchill",
+                value: 215
+            }, {
+                text: "William Avery",
+                value: 216
+            }, {
+                text: "Yvonne Newman",
+                value: 217
+            }, {
+                text: "Zoe Ball",
+                value: 218
+            }, {
+                text: "Zoe Ince",
+                value: 219
+            }
+            
+        ];
+
+        // Mobiscroll Select initialization
+        $('#demo').mobiscroll().select({
+            data: names,                   // More info about data: https://docs.mobiscroll.com/select#opt-data
+            filter: true,                  // More info about filter: https://docs.mobiscroll.com/select#opt-filter
+            placeholder: 'Please select'   // More info about placeholder: https://docs.mobiscroll.com/select#opt-placeholder
+        });
+    
+        // Mobiscroll Select initialization
+        $('#demo-remote').mobiscroll().select({
+            placeholder: 'Please select',  // More info about placeholder: https://docs.mobiscroll.com/select#opt-placeholder
+            multiline: 2,                  // More info about multiline: https://docs.mobiscroll.com/select#opt-multiline
+            height: 50,                    // More info about height: https://docs.mobiscroll.com/select#opt-height
+            data: {                        // More info about data: https://docs.mobiscroll.com/select#opt-data
+                url: 'https://trial.mobiscroll.com/airports/',
+                remoteFilter: true,
+                dataType: 'jsonp',
+                processResponse: function (data) {
+                    var i,
+                        item,
+                        ret = [];
+    
+                    if (data) {
+                        for (i = 0; i < data.length; i++) {
+                            item = data[i];
+                            ret.push({
+                                value: item.code,
+                                text: item.name,
+                                html: '<div style="font-size:16px;line-height:18px;">' + item.name + '</div><div style="font-size:10px;line-height:12px;">' + item.location + ', ' + item.code + '</div>'
+                            });
+                        }
+                    }
+    
+                    return ret;
+                }
+            },
+            filter: true                   // More info about filter: https://docs.mobiscroll.com/select#opt-filter
+        });
+    
+    });
+</script>
+
+</body>
+</html>

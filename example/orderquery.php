@@ -2,7 +2,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-    <title>微信支付样例-订单查询</title>
+    <title>微信支付样例-订单查询23</title>
 </head>
 <?php
 ini_set('date.timezone','Asia/Shanghai');
@@ -24,9 +24,31 @@ function printf_info($data)
 
 if(isset($_REQUEST["transaction_id"]) && $_REQUEST["transaction_id"] != ""){
 	$transaction_id = $_REQUEST["transaction_id"];
+	$sbmid = $_REQUEST["sbmid"];
+
 	$input = new WxPayOrderQuery();
 	$input->SetTransaction_id($transaction_id);
+
+
+	$input->SetSubMch_id($sbmid);
+
 	printf_info(WxPayApi::orderQuery($input));
+	// die('ln 30');
+}
+
+if(isset($_REQUEST["sbmid"]) && $_REQUEST["sbmid"] != ""){
+	$sbmid = $_REQUEST["sbmid"];
+
+	$transactionid = $_REQUEST["tid"];
+	$input = new WxPayOrderQuery();
+	$input->SetSubMch_id($sbmid); 
+
+
+	$num=WxPayConfig::MCHID.date("YmdHis");
+	$input->SetOut_trade_no($num);
+	$input->SetTransaction_id($transactionid);
+	WxPayApi::orderQuery($input);
+	// printf_info(WxPayApi::orderQuery($input));
 	exit();
 }
 
@@ -45,6 +67,8 @@ if(isset($_REQUEST["out_trade_no"]) && $_REQUEST["out_trade_no"] != ""){
         <input type="text" style="width:96%;height:35px;margin-left:2%;" name="transaction_id" /><br /><br />
         <div style="margin-left:2%;">商户订单号：</div><br/>
         <input type="text" style="width:96%;height:35px;margin-left:2%;" name="out_trade_no" /><br /><br />
+        <div style="margin-left:2%;">Sub MID：</div><br/>
+        <input type="text" style="width:96%;height:35px;margin-left:2%;" name="sbmid" /><br /><br />
 		<div align="center">
 			<input type="submit" value="查询" style="width:210px; height:50px; border-radius: 15px;background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay()" />
 		</div>

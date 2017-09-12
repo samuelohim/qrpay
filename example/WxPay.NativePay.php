@@ -53,4 +53,14 @@ class NativePay
 			return $result;
 		}
 	}
+
+
+	public function GetTransactionResults($input)
+	{
+		if($input->GetTrade_type() == "NATIVE")
+		{
+			$result = WxPayApi::orderQuery($input);
+			return $result;
+		}
+	}
 }

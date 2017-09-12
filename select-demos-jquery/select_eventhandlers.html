@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+    <title>Event handlers</title>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    <link rel="stylesheet" href="css/mobiscroll.jquery.min.css">
+    <script src="js/mobiscroll.jquery.min.js"></script>
+
+    <style type="text/css">
+    button {
+        display: inline-block;
+        margin: 5px 5px 0 0;
+        padding: 10px 30px;
+        outline: 0;
+        border: 0;
+        cursor: pointer;
+        background: #5185a8;
+        color: #fff;
+        text-decoration: none;
+        font-family: arial, verdana, sans-serif;
+        font-size: 14px;
+        font-weight: 100;
+    }
+
+    input {
+        width: 100%;
+        margin: 0 0 5px 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        font-family: arial, verdana, sans-serif;
+        font-size: 14px;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+    }
+
+    .mbsc-page {
+        padding: 1em;
+    }
+
+    </style>
+
+</head>
+<body>
+
+<div mbsc-page class="demo-eventhandlers">
+    <select name="City" id="demo">
+        <option value="1">Atlanta</option>
+        <option value="2">Berlin</option>
+        <option value="3">Boston</option>
+        <option value="4">Chicago</option>
+        <option value="5">London</option>
+        <option value="6">Los Angeles</option>
+        <option value="7">New York</option>
+        <option value="8">Paris</option>
+        <option value="9">San Francisco</option>
+    </select>
+
+    <button id="clear">Clear</button>
+    <button id="show">Show</button>
+    
+</div>
+
+<script>
+
+    $(function () {
+    
+        // Mobiscroll Select initialization
+        $('#demo').mobiscroll().select({
+            theme: 'ios',                            // Specify theme like: theme: 'ios' or omit setting to use default
+            lang: 'en',                              // Specify language like: lang: 'pl' or omit setting to use default
+            display: 'bottom',                       // Specify display mode like: display: 'bottom' or omit setting to use default
+            placeholder: 'Please select..',          // More info about placeholder: https://docs.mobiscroll.com/select#opt-placeholder
+            filter: true,                            // More info about filter: https://docs.mobiscroll.com/select#opt-filter
+            onInit: function (event, inst) {         // More info about onInit: https://docs.mobiscroll.com/select#event-onInit
+                // Your custom event handler goes here
+                
+            },
+            onMarkupReady: function (event, inst) {  // More info about onMarkupReady: https://docs.mobiscroll.com/select#event-onMarkupReady
+                // Your custom event handler goes here
+                
+            },
+            onBeforeShow: function (event, inst) {   // More info about onBeforeShow: https://docs.mobiscroll.com/select#event-onBeforeShow
+                // Your custom event handler goes here
+                
+            },
+            onPosition: function (event, inst) {     // More info about onPosition: https://docs.mobiscroll.com/select#event-onPosition
+                // Your custom event handler goes here
+                
+            },
+            onShow: function (event, inst) {         // More info about onShow: https://docs.mobiscroll.com/select#event-onShow
+                // Your custom event handler goes here
+                
+            },
+            onSet: function (event, inst) {          // More info about onSet: https://docs.mobiscroll.com/select#event-onSet
+                // Your custom event handler goes here
+                
+            },
+            onItemTap: function (event, inst) {      // More info about onItemTap: https://docs.mobiscroll.com/select#event-onItemTap
+                // Your custom event handler goes here
+                
+            },
+            onDestroy: function (event, inst) {      // More info about onDestroy: https://docs.mobiscroll.com/select#event-onDestroy
+                // Your custom event handler goes here
+                
+            },
+            onClose: function (event, inst) {        // More info about onClose: https://docs.mobiscroll.com/select#event-onClose
+                // Your custom event handler goes here
+                
+            },
+            onCancel: function (event, inst) {       // More info about onCancel: https://docs.mobiscroll.com/select#event-onCancel
+                // Your custom event handler goes here
+                
+            },
+            onBeforeClose: function (event, inst) {  // More info about onBeforeClose: https://docs.mobiscroll.com/select#event-onBeforeClose
+                // Your custom event handler goes here
+                
+            },
+            onClear: function (event, inst) {        // More info about onClear: https://docs.mobiscroll.com/select#event-onClear
+                // Your custom event handler goes here
+                
+            },
+            onFilter: function (event, inst) {       // More info about onFilter: https://docs.mobiscroll.com/select#event-onFilter
+                // Your custom event handler goes here
+                
+            }
+        });
+
+        $('#show').off().click(function () {
+            $('#demo').mobiscroll('show');
+            return false;
+        });
+    
+        $('#clear').off().click(function () {
+            $('#demo').mobiscroll('clear');
+            return false;
+        });
+
+    });
+</script>
+
+</body>
+</html>

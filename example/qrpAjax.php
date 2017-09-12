@@ -18,7 +18,7 @@ require_once 'log.php';
  * 6、在支付成功通知中需要查单确认是否真正支付成功（见：notify.php）
  */
 $notify = new NativePay();
-$url1 = $notify->GetPrePayUrl("123456789");
+// $url1 = $notify->GetPrePayUrl("123456789");
 // echo 'ln 12 = '.$url1;
 //模式二
 /**
@@ -29,8 +29,8 @@ $url1 = $notify->GetPrePayUrl("123456789");
  * 4、在支付成功通知中需要查单确认是否真正支付成功（见：notify.php）
  */
 
-$fee = $_POST['fee'];	echo "<br>"."ln 55 fee = ".$fee."<br>";
-$qty = 1; // $_POST['qty'];	echo "<br>"."ln 55 fee = ".$fee."<br>";
+$fee = $_POST['fee'];	// echo "<br>"."ln 32 fee = ".$fee."<br>";
+$qty = $_POST['qty']; // $_POST['qty'];	echo "<br>"."ln 55 fee = ".$fee."<br>";
 $totalfee = $qty * $fee;
 
 $input = new WxPayUnifiedOrder();
@@ -41,9 +41,12 @@ $input->SetTotal_fee($totalfee);
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 600));
 $input->SetGoods_tag("test");
- $input->SetNotify_url("example/notify.php");	// imperative
+
+$input->SetNotify_url(WxPayConfig::NOTIFY_URL);	// imperative
  // http://paysdk.weixin.qq.com/example/notify.php
 $input->SetTrade_type("NATIVE");
+
+
 $input->SetProduct_id("123456789");		// anything
 
 $result = $notify->GetPayUrl($input);	// == WxPayApi::unifiedOrder($input);
@@ -58,5 +61,10 @@ $result = $notify->GetPayUrl($input);	// == WxPayApi::unifiedOrder($input);
 
 																return $result;
 ***/
- $url2 = $result["code_url"];
- ?>
+
+// var_dump($result);
+
+echo json_encode($result); // var_dump($result); // echo $result["code_url"];
+
+
+?>

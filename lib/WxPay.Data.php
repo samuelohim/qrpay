@@ -288,6 +288,11 @@ class WxPayUnifiedOrder extends WxPayDataBase
 	{
 		$this->values['appid'] = $value;
 	}
+
+	public function SetSubMchId($value)
+	{
+		$this->values['sub_mch_id'] = $value;
+	}
 	/**
 	* 获取微信分配的公众账号ID的值
 	* @return 值
@@ -796,6 +801,20 @@ class WxPayOrderQuery extends WxPayDataBase
 	public function GetMch_id()
 	{
 		return $this->values['mch_id'];
+	}
+
+
+	public function SetSubMch_id($value)
+	{
+		$this->values['sub_mch_id'] = $value;
+	}
+	/**
+	* 获取微信支付分配的商户号的值
+	* @return 值
+	**/
+	public function GetSubMch_id()
+	{
+		return $this->values['sub_mch_id'];
 	}
 	/**
 	* 判断微信支付分配的商户号是否存在

@@ -47,9 +47,13 @@ class WxPayApi
 		if(!$inputObj->IsNotify_urlSet()){
 			$inputObj->SetNotify_url(WxPayConfig::NOTIFY_URL);//异步通知url
 		}
+
+		$inputObj->SetNotify_url(WxPayConfig::NOTIFY_URL);//异步通知url
 		
 		$inputObj->SetAppid(WxPayConfig::APPID);//公众账号ID
 		$inputObj->SetMch_id(WxPayConfig::MCHID);//商户号
+		$inputObj->SetFee_type(WxPayConfig::CURRENCY); // 
+		$inputObj->SetSubMchId(WxPayConfig::SUBMCHID); // 
 		$inputObj->SetSpbill_create_ip($_SERVER['REMOTE_ADDR']);//终端ip	  
 		//$inputObj->SetSpbill_create_ip("1.1.1.1");  	    
 		$inputObj->SetNonce_str(self::getNonceStr());//随机字符串
@@ -61,6 +65,7 @@ class WxPayApi
 		$startTimeStamp = self::getMillisecond();//请求开始时间
 		$response = self::postXmlCurl($xml, $url, false, $timeOut);
 		$result = WxPayResults::Init($response);
+
 		self::reportCostTime($url, $startTimeStamp, $result);//上报请求花费时间
 		
 		return $result;
@@ -82,7 +87,12 @@ class WxPayApi
 		if(!$inputObj->IsOut_trade_noSet() && !$inputObj->IsTransaction_idSet()) {
 			throw new WxPayException("订单查询接口中，out_trade_no、transaction_id至少填一个！");
 		}
+
+		// echo "wxpay api ln 90 transaction id = "."<br>"; exit();
+//		var_dump($inputObj); exit();  
 		$inputObj->SetAppid(WxPayConfig::APPID);//公众账号ID
+
+		// $inputObj->SetTransaction_id('4004482001201709029721461860');//公众账号ID
 		$inputObj->SetMch_id(WxPayConfig::MCHID);//商户号
 		$inputObj->SetNonce_str(self::getNonceStr());//随机字符串
 		
@@ -91,8 +101,9 @@ class WxPayApi
 		
 		$startTimeStamp = self::getMillisecond();//请求开始时间
 		$response = self::postXmlCurl($xml, $url, false, $timeOut);
+		var_dump($response); die();
 		$result = WxPayResults::Init($response);
-		self::reportCostTime($url, $startTimeStamp, $result);//上报请求花费时间
+		self::reportCostTime($url, $startTimeStamp, $result);	//上报请求花费时间
 		
 		return $result;
 	}

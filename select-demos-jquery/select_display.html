@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+    <title>Display modes</title>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    <link rel="stylesheet" href="css/mobiscroll.jquery.min.css">
+    <script src="js/mobiscroll.jquery.min.js"></script>
+
+    <style type="text/css">
+
+    </style>
+
+</head>
+<body>
+
+<div mbsc-page class="demo-display">
+    <div id="demo-form" style="display:none">
+        <div class="mbsc-form-group">
+            <div class="mbsc-form-group-title">Try different display modes</div>
+            <label>
+                Bottom
+                <select name="City" id="demo-bottom">
+                    <option value="1">Atlanta</option>
+                    <option value="2">Berlin</option>
+                    <option value="3">Boston</option>
+                    <option value="4">Chicago</option>
+                    <option value="5">London</option>
+                    <option value="6">Los Angeles</option>
+                    <option value="7">New York</option>
+                    <option value="8">Paris</option>
+                    <option value="9">San Francisco</option>
+                </select>
+            </label>
+            <label>
+                Top
+                <select name="City" id="demo-top">
+                    <option value="1">Atlanta</option>
+                    <option value="2">Berlin</option>
+                    <option value="3">Boston</option>
+                    <option value="4">Chicago</option>
+                    <option value="5">London</option>
+                    <option value="6">Los Angeles</option>
+                    <option value="7">New York</option>
+                    <option value="8">Paris</option>
+                    <option value="9">San Francisco</option>
+                </select>
+            </label>
+            <label>
+                Center
+                <select name="City" id="demo-center">
+                    <option value="1">Atlanta</option>
+                    <option value="2">Berlin</option>
+                    <option value="3">Boston</option>
+                    <option value="4">Chicago</option>
+                    <option value="5">London</option>
+                    <option value="6">Los Angeles</option>
+                    <option value="7">New York</option>
+                    <option value="8">Paris</option>
+                    <option value="9">San Francisco</option>
+                </select>
+            </label>
+            <label>
+                Bubble
+                <select name="City" id="demo-bubble">
+                    <option value="1">Atlanta</option>
+                    <option value="2">Berlin</option>
+                    <option value="3">Boston</option>
+                    <option value="4">Chicago</option>
+                    <option value="5">London</option>
+                    <option value="6">Los Angeles</option>
+                    <option value="7">New York</option>
+                    <option value="8">Paris</option>
+                    <option value="9">San Francisco</option>
+                </select>
+            </label>
+        </div>
+        <div class="mbsc-padding">
+            <p class="mbsc-thin">With inline display you can embed the Select component in almost any markup or form.</p>
+        </div>
+        <div class="mbsc-form-group">
+            <div class="mbsc-form-group-title">Embedded select scroller</div>
+            <div>
+                <select name="City" id="demo-inline" data-enhance="false">
+                    <option value="1">Atlanta</option>
+                    <option value="2">Berlin</option>
+                    <option value="3">Boston</option>
+                    <option value="4">Chicago</option>
+                    <option value="5">London</option>
+                    <option value="6">Los Angeles</option>
+                    <option value="7">New York</option>
+                    <option value="8">Paris</option>
+                    <option value="9">San Francisco</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    mobiscroll.settings = {
+        
+        lang: 'en',   // Specify language like: lang: 'pl' or omit setting to use default
+        theme: 'ios'            // Specify theme like: theme: 'ios' or omit setting to use default
+    };
+    
+    $(function () {
+    
+        // Mobiscroll Select initialization
+        $('#demo-bottom').mobiscroll().select({
+            display: 'bottom'   // Specify display mode like: display: 'bottom' or omit setting to use default
+        });
+    
+        // Mobiscroll Select initialization
+        $('#demo-top').mobiscroll().select({
+            display: 'top'      // Specify display mode like: display: 'bottom' or omit setting to use default
+        });
+    
+        // Mobiscroll Select initialization
+        $('#demo-center').mobiscroll().select({
+            display: 'center'   // Specify display mode like: display: 'bottom' or omit setting to use default
+        });
+    
+        // Mobiscroll Select initialization
+        $('#demo-bubble').mobiscroll().select({
+            display: 'bubble'   // Specify display mode like: display: 'bottom' or omit setting to use default
+        });
+    
+        // Mobiscroll Select initialization
+        $('#demo-inline').mobiscroll().select({
+            display: 'inline',  // Specify display mode like: display: 'bottom' or omit setting to use default
+            showInput: false    // More info about showInput: https://docs.mobiscroll.com/select#opt-showInput
+        });
+    
+        // Mobiscroll Select initialization
+        $('#demo-form').mobiscroll().form({
+            theme: 'ios',       // Specify theme like: theme: 'ios' or omit setting to use default
+            lang: 'en'          // Specify language like: lang: 'pl' or omit setting to use default
+        });
+    
+    });
+</script>
+
+</body>
+</html>

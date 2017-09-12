@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+    <title>Multiline Select</title>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    <link rel="stylesheet" href="css/mobiscroll.jquery.min.css">
+    <script src="js/mobiscroll.jquery.min.js"></script>
+
+    <style type="text/css">
+    button {
+        display: inline-block;
+        margin: 5px 5px 0 0;
+        padding: 10px 30px;
+        outline: 0;
+        border: 0;
+        cursor: pointer;
+        background: #5185a8;
+        color: #fff;
+        text-decoration: none;
+        font-family: arial, verdana, sans-serif;
+        font-size: 14px;
+        font-weight: 100;
+    }
+
+    input {
+        width: 100%;
+        margin: 0 0 5px 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        font-family: arial, verdana, sans-serif;
+        font-size: 14px;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+    }
+
+    .mbsc-page {
+        padding: 1em;
+    }
+
+    </style>
+
+</head>
+<body>
+
+<div mbsc-page class="demo-multiline">
+    <select name="City" id="demo">
+        <option value="1">Percentage of assets covered by systematic risk assessments (>99)</option>
+        <option value="2">Number of personal vacancies in the security roles required for ISMS (Nil)</option>
+        <option value="3">Time taken to grant, change and remove access privileges (Max. 2 hours)</option>
+        <option value="4">Percentage of agents covered by an effective security awareness program (100%)</option>
+        <option value="5">Number of security access violations (<2)</option>
+        <option value="6">Number of emergency changes (<5)</option>
+        <option value="7">Number of security incidents involving malicious code (Max. 2)</option>
+        <option value="8">Number of systems where security requirements are not met (Max. 2)</option>
+        <option value="9">Average turnaround time of incidents (Max. 2 hours)</option>
+        <option value="10">Number of pending actions to meet response and recovery requirements (Max. 5)</option>
+        <option value="11">Number of scheduled internal audits not done (Max. 1)</option>
+        <option value="12">Number of scheduled penetration tests not done (Max. 1)</option>
+        <option value="13">Number of overdue actions arising out of audit reports (Max. 5)</option>
+        <option value="14">Number of changes not carried out as per change control procedure (Max. 1)</option>
+    </select>
+
+    <button id="clear">Clear</button>
+    <button id="show">Show</button>
+    
+</div>
+
+<script>
+
+    $(function () {
+    
+        // Mobiscroll Select initialization
+        $('#demo').mobiscroll().select({
+            theme: 'ios',       // Specify theme like: theme: 'ios' or omit setting to use default
+            lang: 'en',         // Specify language like: lang: 'pl' or omit setting to use default
+            display: 'bottom',  // Specify display mode like: display: 'bottom' or omit setting to use default
+            multiline: 3,       // More info about multiline: https://docs.mobiscroll.com/select#opt-multiline
+            height: 50          // More info about height: https://docs.mobiscroll.com/select#opt-height
+        });
+
+        $('#show').click(function () {
+            $('#demo').mobiscroll('show');
+            return false;
+        });
+    
+        $('#clear').click(function () {
+            $('#demo').mobiscroll('clear');
+            return false;
+        });
+
+    });
+</script>
+
+</body>
+</html>
